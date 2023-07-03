@@ -1,0 +1,10 @@
+#Ignore directories
+backend/__pycache__
+emails/
+secrets/
+test/
+venv/
+
+#Ignore files
+.env
+*.log
