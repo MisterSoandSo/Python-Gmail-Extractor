@@ -32,8 +32,9 @@ def write_email_to_text_file(email_id, body_content):
     with open(file_path, "w", encoding="utf-8") as file:
         # Write the string to the file
         file.write(body_content)
+        
 
-
+#Handle Extracting information for specifc email ids and marking them as read.
 class EmailMessage():
     def __init__(self,creds,email_id) -> None:
         self.service = build('gmail', 'v1', credentials=creds)
@@ -74,3 +75,31 @@ class EmailMessage():
     
     def mark_Read(self) -> None:
         self.service.users().messages().modify(userId='me', id=self.email_id, body={'removeLabelIds': ['UNREAD']}).execute()
+
+
+# Class handles parsing all Email Ids from email
+class MailList():
+    def __init__(self,creds) -> None:
+        self.service = build('gmail', 'v1', credentials=creds)
+        self.creds = creds
+
+    def get_all_UnreadID(self) -> list:
+        results = self.service.users().messages().list(userId='me', labelIds=['INBOX'], q='is:unread').execute()
+        return results.get('messages', [])
+    
+    def print_msgID_Subject(self, messages):
+        if len(messages) == 0:
+            print("No Messages")
+            exit()
+        else:
+            for message in messages:
+                try:
+                    print("Message ID: ",message['id'])
+                    msg = EmailMessage(self.creds,message['id'])
+                    print("Subject: ",msg.get_Subject())
+                    print("From: ", msg.get_Sender())
+                    print("-"*45)
+                except:
+                    print("Error ...")
+        
+    
