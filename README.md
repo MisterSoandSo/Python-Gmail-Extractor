@@ -5,10 +5,10 @@ Demo Project. Extract data from specifc senders and store locally in directory.
 | Tasks                                         | Done |
 |-----------------------------------------------|------|
 | Connect to Gmail via Python and credentials   | [x]  |
-| Create a terminal client interface            | [ ]  |
-| Parse for specific senders                    | [ ]  |
-| Extract table data and store in csv           | [ ]  |
-| Automate process to run regularly             | [ ]  |
+| Create a terminal client interface            | [x]  |
+| Parse for specific senders                    | [x]  |
+| Extract table data and store in csv           | [x]  |
+| Automate process to run regularly             | [x]  |
 
 ## Intial Google Cloud Setup
 1. Setup a Google Cloud Project with Gmail Api enabled.
@@ -21,15 +21,26 @@ Copy the following into `.env` before running this project.
 token_path="filepath/token.json"
 credential_path="filepath/credentials.json"
 scope="https://www.googleapis.com/auth/gmail.modify"
-
-
 ```
 
 ## Usage
 ```
-#Placeholder ... Will be updated on a later date.
+#Placeholder ... Will be updated on a later date. 
 ```
 
+## Automation
+```
+# Windows
+In "Task Scheduler", create a new task and set the trigger to run the script with arguements.
+
+# Linux/ Mac
+crontab -e
+0 8 * * * python main.py option2        #Will run function option2 8am every day
+
+or
+
+0 */2 * * * python main.py option3      #Will run function option3 every 2 hours
+```
 
 ## Setup Virtual Environment
 In the console or terminal, type `python -m venv venv` to initialize the python virtual environment. In linux, you might have to run `sudo apt update && apt update -y` to install pip for later uses.
