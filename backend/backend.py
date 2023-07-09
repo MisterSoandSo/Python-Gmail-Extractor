@@ -127,5 +127,14 @@ class MailList():
                 msg.get_attachments()
                 print("-"*45)
                 
-        
-    
+    def get_from_Sender(self,addr_book:list):
+        # Specify the sender email addresses
+        if addr_book:
+            sender_emails = addr_book   #['sender1@example.com', 'sender2@example.com'
+            query_params = [f"from:{email}" for email in sender_emails]
+            query = ' OR '.join(query_params)
+
+            response = self.service.users().messages().list(userId='me', q=query).execute()
+            self.print_msgID_Subject(response)
+        else:
+            print("No Mail found from senders")
