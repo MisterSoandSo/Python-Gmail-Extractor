@@ -1,22 +1,25 @@
 # Python Gmail Extractor
-Demo Project. Extract data from specifc senders and store locally in directory.
 
-# Project Objectives
-| Tasks                                         | Done |
-|-----------------------------------------------|------|
-| Connect to Gmail via Python and credentials   | [x]  |
-| Create a terminal client interface            | [x]  |
-| Parse for specific senders                    | [x]  |
-| Extract table data and store in csv           | [x]  |
-| Automate process to run regularly             | [x]  |
+This is a demonstration project that allows you to extract data from specific senders in Gmail to process and to store it locally in a directory.
 
-## Intial Google Cloud Setup
-1. Setup a Google Cloud Project with Gmail Api enabled.
-2. Setup  OAuth consent screen  in APIs & Services. Choose user type to `External`. Fill in the required `App Name` and `Email`. Modify Scopes and Test Users for your own needs. If you don't plan to push this Production, then make sure to add in the neccessary test users who will be using this application.
-3. Authorize Desktop application via APIs & Services > Credentials. Click Create Credentials > OAuth client ID. Click Application type > Desktop app. `Name` field is used to identify which credential is used on console. Create and then download: `credential.json` to your working directory.
+## Project Objectives
+
+- [x] Connect to Gmail via Python and Credentials
+- [ ] Create a terminal client interface
+- [ ] Parse for specific senders
+- [ ] Extract table data and store it in a CSV
+- [x] Automate the process to run regularly
+- [ ] ...
+
+## Initial Google Cloud Setup
+
+1. Set up a Google Cloud Project with the Gmail API enabled.
+2. Configure OAuth consent screen in APIs & Services. Choose user type as "External." Fill in the required "App Name" and "Email." Modify Scopes and Test Users for your specific needs. If you don't plan to use this in production, ensure you add the necessary test users who will use this application.
+3. Authorize the Desktop application via APIs & Services > Credentials. Click "Create Credentials" > "OAuth client ID." Choose "Desktop app" as the application type. The "Name" field is used to identify which credential is used on the console. Create and then download "credentials.json" to your working directory.
 
 ## Setup .env file
-Copy the following into `.env` before running this project.
+
+Copy the following into a `.env` file before running this project:
 ```
 token_path="filepath/token.json"
 credential_path="filepath/credentials.json"
